@@ -1,0 +1,337 @@
+/* Typography */
+body.editor-styles-wrapper {
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    font-size: var(--font-size);
+    line-height: 1.6;
+}
+
+/* Alignment */
+.alignleft,
+.alignright {
+    max-width: 50%;
+}
+
+.alignleft {
+    margin-right: 1rem;
+}
+
+.alignright {
+    margin-left: 1rem;
+}
+
+/* Embeds */
+.wp-block-embed {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Gutenberg Specific Styles */
+.editor-styles-wrapper .block-editor-block-list__block {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.editor-styles-wrapper .block-editor-writing-flow {
+    padding: 2rem;
+}
+
+.editor-styles-wrapper .block-editor-block-list__block.wp-block {
+    margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper .block-editor-block-list__block h2 {
+    margin-top: 1.5rem;
+}
+
+/* Cover Block */
+.wp-block-cover {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+}
+
+.wp-block-cover h2 {
+    color: inherit;
+}
+
+/* Group Block */
+.wp-block-group {
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-group__inner-container {
+    padding: 1rem;
+}
+
+/* Separator */
+.wp-block-separator {
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* Media & Text Block */
+.wp-block-media-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-media-text__media {
+    flex: 1;
+}
+
+.wp-block-media-text__content {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* Buttons Block */
+.wp-block-buttons .wp-block-button__link {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border-radius: var(--button-border-radius);
+    border: var(--border-width) var(--border-style) var(--button-bg-color);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.wp-block-buttons .wp-block-button__link:hover {
+    background-color: var(--button-hover-color);
+    border-color: var(--button-hover-color);
+}
+
+/* Columns Block */
+.wp-block-columns {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-column {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* Spacer Block */
+.wp-block-spacer {
+    height: 1.5rem;
+}
+
+/* Gallery Block */
+.wp-block-gallery {
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-gallery .blocks-gallery-item {
+    margin: 0.5rem;
+}
+
+/* Video Block */
+.wp-block-video {
+    margin-bottom: 1.5rem;
+}
+
+/* Audio Block */
+.wp-block-audio {
+    margin-bottom: 1.5rem;
+}
+
+/* File Block */
+.wp-block-file {
+    margin-bottom: 1.5rem;
+}
+
+/* Heading Block */
+.wp-block-heading {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.wp-block-heading h1,
+.wp-block-heading h2,
+.wp-block-heading h3,
+.wp-block-heading h4,
+.wp-block-heading h5,
+.wp-block-heading h6 {
+    font-family: var(--heading-font);
+    font-weight: var(--heading-font-weight);
+    color: var(--heading-color);
+}
+
+/* Paragraph Block */
+.wp-block-paragraph {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--primary-color);
+}
+
+/* List Block */
+.wp-block-list {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.wp-block-list ul,
+.wp-block-list ol {
+    margin-bottom: 0;
+}
+
+.wp-block-list ul {
+    list-style-type: disc;
+}
+
+.wp-block-list ol {
+    list-style-type: decimal;
+}
+
+/* Code Block */
+.wp-block-code {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: #e83e8c;
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.wp-block-preformatted {
+    display: block;
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+/* Group Block */
+.wp-block-group {
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-group__inner-container {
+    padding: 1rem;
+}
+
+/* Separator Block */
+.wp-block-separator {
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* Media & Text Block */
+.wp-block-media-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-media-text__media {
+    flex: 1 1 50%;
+}
+
+.wp-block-media-text__content {
+    flex: 1 1 50%;
+    padding: 1rem;
+}
+
+/* Quote Block */
+.wp-block-quote {
+    margin: 0 0 1.5rem;
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid var(--link-color);
+    background-color: #f8f9fa;
+}
+
+.wp-block-quote p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--primary-color);
+}
+
+.wp-block-quote cite {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Button Radius */
+.wp-block-buttons .wp-block-button__link,
+#comments [type=submit],
+input[type='text'],
+input[type='email'],
+input[type='url'],
+textarea {
+    border-radius: var(--button-border-radius);
+}
+
+/* Buttons Block */
+.wp-block-buttons .wp-block-button__link {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: var(--border-width) var(--border-style) var(--button-bg-color);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.wp-block-buttons .wp-block-button__link:hover {
+    background-color: var(--button-hover-color);
+    border-color: var(--button-hover-color);
+}
+
+/* Columns Block */
+.wp-block-columns {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-column {
+    flex: 1;
+    padding: 1rem;
+}
+
+/* Spacer Block */
+.wp-block-spacer {
+    height: 1.5rem;
+}
+
+/* Gallery Block */
+.wp-block-gallery {
+    margin-bottom: 1.5rem;
+}
+
+.wp-block-gallery .blocks-gallery-item {
+    margin: 0.5rem;
+}
+
+/* Video Block */
+.wp-block-video {
+    margin-bottom: 1.5rem;
+}
+
+/* Audio Block */
+.wp-block-audio {
+    margin-bottom: 1.5rem;
+}
+
+/* File Block */
+.wp-block-file {
+    margin-bottom: 1.5rem;
+}

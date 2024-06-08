@@ -1,0 +1,155 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.widget-title {
+    color: var(--secondary-accent-color);
+}
+
+/* Body Styles */
+body {
+    color: var(--primary-color);
+    background-color: var(--body-bg-color);
+}
+/* Blockquote Styles */
+
+.wp-block-quote p {
+    color: var(--secondary-color);
+
+}
+
+.wp-block-quote,
+blockquote {
+    border-left: 0.5em solid var(--primary-accent-color);
+    background-color: var(--secondary-accent-color);
+    color: var(--secondary-color);
+    font-style: italic;
+    padding: 0.5em;
+}
+
+blockquote p {
+    margin-bottom: 0.5em;
+}
+
+/* Color Mode Navbar */
+.navbar {
+    background-color: var(--nav-bg-color);
+}
+
+.navbar,
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link {
+    color: var(--nav-text-color);
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link,
+a.nav-link.active {
+    color: var(--nav-link-hover-color) !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--nav-link-hover-color);
+    color: #beb4f7
+}
+
+/* Theme DIV Style */
+main article,
+#sidebar,
+.sidebar,
+.widget-area,
+.hero-description,
+.footer-area,
+.dropdown-menu {
+    background-color: var(--sidebar-bg-color);
+    color: var(--primary-color);
+}
+
+#main .card {
+    background-color: unset;
+}
+
+.date-card {
+    background-color: var(--sidebar-bg-color);
+    color: var(--primary-color);
+}
+
+
+/* Theme Widgets */
+.widget a,
+.widget li::before,
+a {
+    color: var(--primary-accent-color);
+}
+
+#comments [type=submit] {
+    background-color: var(--secondary-color);
+}
+
+#comments [type=submit]:hover,
+.widget .button:hover,
+.widget button:hover,
+.widget input[type='submit']:hover,
+.widget input[type='button']:hover,
+.accordion-button:not(.collapsed),
+.btn-primary:hover {
+    background-color: var(--primary-accent-color);
+    color: var(--secondary-color);
+}
+
+/* Theme Buttons */
+button,
+.button,
+[type=submit],
+.wp-element-button,
+.wp-block-search__button,
+[type=button],
+[type=reset],
+.wp-block-button__link,
+.bg-primary,
+.widget .button,
+.widget button,
+.widget input[type='submit'],
+.widget input[type='button'],
+.btn-primary {
+    font-weight: 500;
+    color: var(--button-text-color);
+    background-color: var(--button-bg-color);
+    border: unset;
+}
+
+/* Theme Text */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Theme Progress Bar */
+.progress-bar {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+/* Theme Nav Tabs */
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+.active a {
+    color: var(--primary-accent-color) !important;
+}
+
+
+.dropdown-item {
+    color: var(--primary-color);
+}
