@@ -200,7 +200,6 @@ class AjaxinWP {
         }
         
         console.log(`Page URL: ${url}`);
-        // Example: Update a state variable, initialize a plugin, etc.
     }
 }
 

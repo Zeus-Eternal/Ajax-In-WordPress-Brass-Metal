@@ -67,7 +67,7 @@ function ajaxinwp_validate_js_syntax($input) {
 
     // Use external libraries or services if necessary for validation
     // For now, simply check if the file contains valid JS
-    // This is a placeholder for more complex validation logic
+    // This is a placeholder, a starting place for a developer can add more complex validation logic
     $is_valid = true;
 
     // Clean up the temporary file

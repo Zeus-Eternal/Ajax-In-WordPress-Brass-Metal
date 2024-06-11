@@ -33,7 +33,7 @@
         }
     }
 
-    // Other Customizer settings...
+    // Color theme settings
     wp.customize( 'ajaxinwp_Header1_bg_color', function( value ) {
         value.bind( function( to ) {
             $( 'header' ).css( 'background-color', to );

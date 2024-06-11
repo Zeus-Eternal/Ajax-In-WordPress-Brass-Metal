@@ -1,14 +1,14 @@
 <?php
 /**
  * Site Identity Options
- * Add settings and controls for Site Identity customization
+ * Settings and controls for Site Identity customization
  */
 
 // Logo size limits
 $max_logo_size = 200;
 $min_logo_size = 50;
 
-// Add other element settings with defaults and sanitization
+// Element settings with defaults and sanitization
 $settings = [
     // Advanced Logo Options for Different Viewports
     // Size

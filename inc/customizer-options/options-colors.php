@@ -7,7 +7,7 @@
 
     // Add Color Scheme Setting
     $wp_customize->add_setting('ajaxinwp_color_scheme', [
-        'default'           => 'color',
+        'default'           => 'dark',
         'transport'         => 'refresh',
         'sanitize_callback' => 'ajaxinwp_sanitize_color_scheme',
     ]);
