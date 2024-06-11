@@ -46,6 +46,11 @@ main article,
 .dropdown-menu {
     word-wrap: break-word;
 }
+
+div#sidebar>ul>li {
+    list-style: none;
+}
+
 main article {
     margin-bottom: 1.5em;
 }
@@ -405,7 +410,7 @@ input[type='url'],
 textarea {
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    width: 100%;
+    max-width: 100%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
