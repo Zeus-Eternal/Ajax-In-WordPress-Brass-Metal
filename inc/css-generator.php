@@ -5,30 +5,35 @@
  * @return string Custom CSS.
  */
 function ajaxinwp_customizer_css() {
-    // Darken CSS color for hover state
+    // Define the percentage to darken the color for hover states.
     $darken = 30;
 
     /**
-     * Darken a hex color.
+     * Darken a hex color by a given percentage.
      *
      * @param string $color Hex color.
      * @param int $percent Percentage to darken.
      * @return string Darkened hex color.
      */
     function darken_color($color, $percent) {
+        // Remove the hash if present.
         $color = str_replace('#', '', $color);
+
+        // Convert the hex color to RGB values.
         $r = hexdec(substr($color, 0, 2));
         $g = hexdec(substr($color, 2, 2));
         $b = hexdec(substr($color, 4, 2));
 
+        // Calculate the new RGB values after darkening.
         $r = max(0, $r - round(255 * $percent / 100));
         $g = max(0, $g - round(255 * $percent / 100));
         $b = max(0, $b - round(255 * $percent / 100));
 
+        // Return the darkened hex color.
         return sprintf('#%02x%02x%02x', $r, $g, $b);
     }
 
-    // Default colors and settings for different themes
+    // Define default colors and settings for each color scheme.
     $default_colors = [
         '--primary-color' => [
             'color' => sanitize_hex_color(get_theme_mod('ajaxinwp_color_primary', '#dee2e6')),
@@ -170,7 +175,12 @@ function ajaxinwp_customizer_css() {
     $logo_size_tablet = get_theme_mod('ajaxinwp_logo_size_tablet', 120);
     $logo_size_mobile = get_theme_mod('ajaxinwp_logo_size_mobile', 80);
 
-    // Function to generate CSS variables
+    /**
+     * Generate CSS variables for the root element.
+     *
+     * @param array $variables CSS variables.
+     * @return string CSS rules.
+     */
     function generate_css_variables($variables) {
         $css = ':root {';
         foreach ($variables as $css_var => $value) {
@@ -180,7 +190,13 @@ function ajaxinwp_customizer_css() {
         return $css;
     }
 
-    // Function to generate theme-specific CSS
+    /**
+     * Generate theme-specific CSS.
+     *
+     * @param string $theme Theme name (e.g., 'dark', 'light').
+     * @param array $variables CSS variables.
+     * @return string CSS rules.
+     */
     function generate_theme_css($theme, $variables) {
         $css = "body[data-theme=\"{$theme}\"] {";
         foreach ($variables as $css_var => $value) {
