@@ -1,6 +1,6 @@
-/* General Styles */
+
 :root {
-    /* Spacing */
+    
     --spacing-unit: 0.05em;
 }
 
@@ -270,10 +270,10 @@ img.custom-logo {
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=UTF-8, /* Custom SVG toggle icon for crisp appearance */");
+    background-image: url("data:image/svg+xml;charset=UTF-8, ");
 }
 
-/* Responsive Sidebar */
+
 @media (max-width: 768px) {
 
     .sidebar,
@@ -298,7 +298,7 @@ img.custom-logo {
     }
 }
 
-/* General Content */
+
 @media (max-width: 768px) {
     .navbar-nav {
         flex-direction: column;
@@ -310,7 +310,7 @@ img.custom-logo {
     }
 }
 
-/* Tables */
+
 table {
     width: 100%;
     margin-bottom: 1rem;
@@ -331,7 +331,7 @@ tbody+tbody {
     border-top: 2px solid var(--border-color);
 }
 
-/* Alignment */
+
 .alignleft,
 .alignright {
     max-width: 50%;
@@ -345,13 +345,13 @@ tbody+tbody {
     margin-left: 1rem;
 }
 
-/* Embeds */
+
 .wp-block-embed {
     max-width: 100%;
     margin-bottom: 1rem;
 }
 
-/* Navbar Styles */
+
 .navbar {
     text-transform: uppercase;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -359,20 +359,22 @@ tbody+tbody {
     right: 0;
     z-index: 100;
     clear: both;
+    font-family: var(--nav-font-family);
+    font-weight: var(--nav-font-weight);
 }
 
 a.nav-link {
     font-weight: 500;
 }
 
-/* Header and Footer */
+
 header.entry-header,
 header.single-header,
 .footer {
     padding: 0;
     margin-bottom: 0;
     clear: both;
-    /* Ensure header/hero is cleared by navbar */
+    
 }
 
 header.single-header {
@@ -401,7 +403,7 @@ pre {
     overflow: auto;
 }
 
-/* Forms */
+
 input[type='text'],
 input[type='email'],
 input[type='search'],
@@ -436,7 +438,7 @@ textarea:focus {
     padding: 0.5rem 1rem;
 }
 
-/* Lists */
+
 ul,
 ol {
     margin-top: 0;
@@ -459,7 +461,7 @@ ol {
     list-style-type: decimal;
 }
 
-/* Gutenberg Editor Styles */
+
 .editor-styles-wrapper .block-editor-block-list__block {
     max-width: 800px;
     margin: 0 auto;
@@ -485,7 +487,7 @@ ol {
     padding: 1rem;
 }
 
-/* Columns Block */
+
 .wp-block-columns {
     display: flex;
     margin-bottom: 1.5rem;
@@ -496,12 +498,12 @@ ol {
     padding: 1rem;
 }
 
-/* Spacer Block */
+
 .wp-block-spacer {
     height: 1.5rem;
 }
 
-/* Gallery Block */
+
 .wp-block-gallery {
     margin-bottom: 1.5rem;
 }
@@ -510,14 +512,14 @@ ol {
     margin: 0.5rem;
 }
 
-/* Video Block */
+
 .wp-block-video,
 .wp-block-audio,
 .wp-block-file {
     margin-bottom: 1.5rem;
 }
 
-/* Blockquote and Code */
+
 .wp-block-quote,
 .wp-block-pullquote {
     margin: 0 0 1.5rem;
@@ -535,7 +537,7 @@ ol {
     font-size: 1rem;
 }
 
-/* Loader Overlay */
+
 .loader-overlay {
     position: fixed;
     top: 0;
@@ -549,7 +551,7 @@ ol {
     z-index: 9999;
 }
 
-/* Spinner */
+
 .spinner {
     border: 5px solid #f3f3f3;
     border-top: 5px solid #3498db;
@@ -570,6 +572,18 @@ ol {
 }
 
 #ajax-container {
-    /* other styles */
+    
     transition: opacity 0.5s ease;
+}
+
+
+.ajaxinwp-toc {
+    background-color: var(--primary-accent-color);
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border: 1px solid var(--border-color);
+}
+.ajaxinwp-toc ol {
+    padding-left: 1.25em;
+    margin: 0;
 }
