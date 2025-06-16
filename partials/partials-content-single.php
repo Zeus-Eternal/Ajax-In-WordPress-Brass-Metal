@@ -16,11 +16,10 @@ echo '<!-- partials-content-single.php loaded -->';
 
     <div class="entry-content">
         <?php
-        if (has_post_thumbnail()) {
-            echo '<div class="post-thumbnail">';
-            the_post_thumbnail('large');
-            echo '</div>';
-        }
+        // Display the featured image if available, otherwise show the fallback
+        echo '<div class="post-thumbnail">';
+        echo get_post_thumbnail_or_fallback(get_the_ID(), 'large');
+        echo '</div>';
 
         the_content();
 

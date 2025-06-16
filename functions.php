@@ -41,11 +41,28 @@ add_action('after_setup_theme', 'ajaxinwp_setup');
 function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') {
     if (has_post_thumbnail($post_id)) {
         return get_the_post_thumbnail($post_id, $size, $attr);
-    } else {
-        $default_image_url = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
-        return '<img src="' . esc_url($default_image_url) . '" alt="' . esc_attr__('Default Image', 'ajaxinwp') . '" class="attachment-' . esc_attr($size) . ' size-' . esc_attr($size) . ' wp-post-image">';
     }
+
+    $fallback = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback) {
+        $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
+
+    return '<img src="' . esc_url($fallback) . '" alt="' . esc_attr__('Default Image', 'ajaxinwp') . '" class="attachment-' . esc_attr($size) . ' size-' . esc_attr($size) . ' wp-post-image">';
 }
+
+/**
+ * Add onerror fallback to attachment images.
+ */
+function ajaxinwp_image_fallback_attr($attr) {
+    $fallback = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback) {
+        $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
+    $attr['onerror'] = "this.onerror=null;this.dataset.fallbackLoaded=true;this.src='" . esc_js($fallback) . "'";
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'ajaxinwp_image_fallback_attr');
 
  
 
@@ -66,19 +83,27 @@ function ajaxinwp_styles_and_scripts() {
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), filemtime(get_template_directory() . '/assets/js/bootstrap.bundle.min.js'), true);
     wp_enqueue_script('ajaxinwp-js', get_template_directory_uri() . '/assets/js/ajaxinwp.js', array('jquery'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('ajaxinwp-image-fallback', get_template_directory_uri() . '/assets/js/image-fallback.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
+    wp_enqueue_script('ajaxinwp-theme-switcher', get_template_directory_uri() . '/assets/js/theme-switcher.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('custom-logo-script', get_template_directory_uri() . '/assets/js/logo.js', [], wp_get_theme()->get('Version'), true);
 
     // Localize script
+    $fallback_image = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback_image) {
+        $fallback_image = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
+
     wp_localize_script('ajaxinwp-js', 'ajaxinwp_params', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('ajaxinwp_nonce'),
         'homeURL'  => get_home_url(),
         'isHome'   => is_home() || is_front_page(),
-        'fallbackImage' => get_template_directory_uri() . '/assets/img/fallback1080x720.jpg'
+        'fallbackImage' => esc_url($fallback_image)
     ));
 
-    // Add inline script
-    wp_add_inline_script('ajaxinwp-js', 'document.body.dataset.theme = "' . esc_js(get_theme_mod('ajaxinwp_color_scheme', 'auto')) . '";', 'before');
+    wp_localize_script('ajaxinwp-theme-switcher', 'ajaxinwp_theme', array(
+        'theme' => get_theme_mod('ajaxinwp_color_scheme', 'auto')
+    ));
+
 
     // Enqueue comment reply script on singular pages with open comments
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -316,6 +341,22 @@ function ajaxinwp_add_table_of_contents($content) {
 }
 add_filter('the_content', 'ajaxinwp_add_table_of_contents');
 
+ 4ww5bn-codex/implement-robust-image-handling-and-fallback
+/**
+ * Apply theme colors to WordPress admin area for better UX.
+ */
+function ajaxinwp_admin_styles() {
+    $primary = sanitize_hex_color(get_theme_mod('ajaxinwp_color_primary', '#0d6efd'));
+    $secondary = sanitize_hex_color(get_theme_mod('ajaxinwp_color_secondary', '#6c757d'));
+    echo '<style>
+        #adminmenu, #wpadminbar { background:' . esc_attr($primary) . '; }
+        #adminmenu .wp-submenu, #adminmenu .wp-has-current-submenu .wp-submenu { background:' . esc_attr($secondary) . '; }
+        #adminmenu a, #wpadminbar a { color:#fff; }
+    </style>';
+}
+add_action('admin_head', 'ajaxinwp_admin_styles');
+
+ 
  
 
 ?>

@@ -15,6 +15,13 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Block Patterns**: Reusable layout patterns registered via PHP.
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
 - **Image Fallbacks**: Missing images automatically display a default placeholder.
+- **Customizable Fallback Image**: Set your own placeholder image in the Customizer.
+- **Auto Dark/Light Mode**: Choose "Auto" to follow your device's color preference.
+ 
+- **Admin Color Integration**: WordPress admin screens adopt your chosen theme colors.
+- **Resilient Image Handling**: Broken images are replaced client-side for a polished look.
+
+
 - **Flexible Navigation**: Multiple menu locations and customizable fonts.
 - **Automatic Table of Contents**: Posts include a generated index for easy navigation.
 - **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
@@ -179,7 +186,8 @@ class AjaxinWP {
             })
             .catch(() => {
                 container.innerHTML = '<div class="alert alert-danger">Error loading content.</div>';
-                container.style.opacity = '1';
+- **Default Color Scheme**: Choose between 'Auto', 'Color', 'Light', or 'Dark'.
+  - *Auto* follows your device preference for dark or light mode.
             })
             .finally(() => {
                 this.hideLoader();
@@ -208,6 +216,7 @@ AjaxInWP Theme Customizer offers a comprehensive suite of customization options 
 This section allows you to customize the color scheme of your theme.
 
 - **Default Color Scheme**: Choose between 'Color', 'Light', or 'Dark'.
+- *All color options start with an award-winning palette so your site looks great from the start.*
 - **Primary Color**: Set the primary color used throughout the theme.
 - **Secondary Color**: Set the secondary color used throughout the theme.
 - **Primary Accent Color**: Set the primary accent color.
@@ -246,6 +255,14 @@ This section allows you to customize the layout of various elements of your them
 - **Navigation Position**: Choose between 'Fixed' or 'Static' for the navigation bar.
 - **Navigation Layout**: Choose between 'Default', 'Container', or 'Container Fluid' for the navigation layout.
 - **Header Layout**: Choose between 'Default', 'Container', or 'Container Fluid' for the header layout.
+### Image Options
+
+**Section**: `ajaxinwp_image_options`
+
+This section controls fallback images used by the theme.
+
+- **Fallback Image**: Upload an image to display whenever posts have no featured image.
+
 - **Widget Layout**: Choose between 'Default', 'Container', or 'Container Fluid' for the widget layout.
 - **Footer Layout**: Choose between 'Default
 
