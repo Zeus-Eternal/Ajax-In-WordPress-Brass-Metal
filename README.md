@@ -9,8 +9,16 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Developer-Friendly**: Easy to customize and extend.
 - **Theme Modes**: Supports Dark, Light, and Color modes for different visual preferences.
 - **Block Theme Ready**: Includes `theme.json` for full site editing support.
+ 
+- **Multiple Block Templates**: Includes templates for posts, pages, archives, and 404 screens.
 - **Block Patterns**: Reusable layout patterns registered via PHP.
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
+- **Flexible Navigation**: Multiple menu locations and customizable fonts.
+- **Automatic Table of Contents**: Posts include a generated index for easy navigation.
+
+- **Block Patterns**: Reusable layout patterns registered via PHP.
+- **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
+
 
 ## Why Ajax?
 
@@ -64,10 +72,40 @@ By leveraging Ajax, developers can create more engaging, efficient, and interact
 All third-party CSS and JavaScript libraries are bundled in the `assets/` directory. This keeps your site independent of external CDNs and allows offline development. Update these files as needed, then run `wp_enqueue_style` and `wp_enqueue_script` versioning via `filemtime()` ensures browsers get the latest versions.
 
 ## Block Theme Support
+
+This version introduces a `theme.json` file and several block templates. You can manage global styles and edit templates directly in the Site Editor. The `templates/` directory now includes `index.html`, `single.html`, `page.html`, `archive.html`, and `404.html` along with reusable parts under `parts/`.
+
+## Block Patterns
+Premium block patterns help you build pages faster. All patterns are registered under the **AjaxInWP** category and include the following examples:
+
+1. **Hero Section**
+2. **Features Grid**
+3. **About Section**
+4. **Services Overview**
+5. **Pricing Tables**
+6. **Testimonials**
+7. **Team Members**
+8. **Image Gallery**
+9. **Call to Action**
+10. **Newsletter Signup**
+11. **FAQ List**
+12. **Contact Section**
+13. **Posts Grid**
+14. **Banner Header**
+15. **Footer Call to Action**
+16. **Q&A Accordion**
+17. **Product Grid**
+
+Insert any of these patterns from the block inserter to quickly compose rich layouts.
+
+## Table of Contents
+Each post automatically displays a table of contents based on its headings. This helps readers navigate long articles more easily.
+
 This version introduces a `theme.json` file, enabling WordPress Full Site Editing features. Customize global colors, fonts, and layout directly through the Site Editor.
 
 ## Block Patterns
 Predefined block patterns help you build pages faster. The theme registers a simple hero pattern which you can insert from the block inserter under the **AjaxInWP** category.
+
 
 ## Ajax Implementation
 AjaxInWP Brass-Metal uses JavaScript to handle internal link clicks and fetch content dynamically. Below is a brief overview of how it works:
@@ -231,6 +269,8 @@ This section allows you to customize the typography of your theme.
 - **Link Hover Weight**: Choose the weight for links when hovered over (e.g., Normal, Bold).
 - **Link Hover Decoration**: Choose the decoration style for links when hovered over (e.g., None, Underline).
 - **Global Font Size**: Set the global font size for the theme (e.g., 12px, 14px, 16px, 18px, 20px).
+- **Navigation Font**: Select a custom font for your navigation menus.
+- **Navigation Font Weight**: Choose the weight for navigation links.
 
 ### Widgets
 
