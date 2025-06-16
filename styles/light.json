@@ -1,0 +1,14 @@
+{
+  "title": "Light",
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#212529"
+    },
+    "elements": {
+      "link": {
+        "color": {"text": "#007bff"}
+      }
+    }
+  }
+}

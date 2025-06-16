@@ -1,0 +1,14 @@
+{
+  "title": "Color",
+  "styles": {
+    "color": {
+      "background": "#e81b85",
+      "text": "#212529"
+    },
+    "elements": {
+      "link": {
+        "color": {"text": "#007bff"}
+      }
+    }
+  }
+}
