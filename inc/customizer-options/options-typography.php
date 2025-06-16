@@ -241,4 +241,36 @@ $wp_customize->add_control('ajaxinwp_font_size', [
         '20px' => '20px',
     ],
 ]);
+
+// Group 5: Navigation Font
+$wp_customize->add_setting('ajaxinwp_nav_font', [
+    'default'           => 'Roboto',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'sanitize_text_field',
+]);
+$wp_customize->add_control('ajaxinwp_nav_font', [
+    'label'    => __('Navigation Font', 'ajaxinwp'),
+    'section'  => 'ajaxinwp_typography_options',
+    'settings' => 'ajaxinwp_nav_font',
+    'type'     => 'select',
+    'choices'  => $font_choices,
+]);
+
+$wp_customize->add_setting('ajaxinwp_nav_font_weight', [
+    'default'           => 'normal',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'sanitize_text_field',
+]);
+$wp_customize->add_control('ajaxinwp_nav_font_weight', [
+    'label'    => __('Navigation Font Weight', 'ajaxinwp'),
+    'section'  => 'ajaxinwp_typography_options',
+    'settings' => 'ajaxinwp_nav_font_weight',
+    'type'     => 'select',
+    'choices'  => [
+        'normal' => 'Normal',
+        'bold'   => 'Bold',
+        '100'    => '100',
+        '200'    => '200',
+    ],
+]);
 ?>
