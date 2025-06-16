@@ -10,12 +10,23 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Developer-Friendly**: Easy to customize and extend.
 - **Theme Modes**: Supports Dark, Light, and Color modes for different visual preferences.
 - **Block Theme Ready**: Includes `theme.json` for full site editing support.
+ 
+
+ 
+ 
 - **Multiple Block Templates**: Includes templates for posts, pages, archives, and 404 screens.
 - **Block Patterns**: Reusable layout patterns registered via PHP.
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
 - **Flexible Navigation**: Multiple menu locations and customizable fonts.
 - **Automatic Table of Contents**: Posts include a generated index for easy navigation.
+ 
 - **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
+
+
+- **Block Patterns**: Reusable layout patterns registered via PHP.
+- **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
+
+ 
 
 ## Why Ajax?
 
@@ -69,7 +80,11 @@ By leveraging Ajax, developers can create more engaging, efficient, and interact
 All third-party CSS and JavaScript libraries are bundled in the `assets/` directory. This keeps your site independent of external CDNs and allows offline development. Update these files as needed, then run `wp_enqueue_style` and `wp_enqueue_script` versioning via `filemtime()` ensures browsers get the latest versions.
 
 ## Block Theme Support
-This version introduces a `theme.json` file and several block templates. You can manage global styles and edit templates directly in the Site Editor. The `templates/` directory now includes `index.html`, `single.html`, `page.html`, `archive.html`, and `404.html` along with reusable parts under `parts/`.
+ 
+
+
+ 
+
 
 ## Block Patterns
 Premium block patterns help you build pages faster. All patterns are registered under the **AjaxInWP** category and include the following examples:
@@ -97,6 +112,14 @@ Insert any of these patterns from the block inserter to quickly compose rich lay
 ## Table of Contents
 Each post automatically displays a table of contents based on its headings. This helps readers navigate long articles more easily.
 
+ 
+
+
+## Block Patterns
+Predefined block patterns help you build pages faster. The theme registers a simple hero pattern which you can insert from the block inserter under the **AjaxInWP** category.
+
+
+ 
 ## Ajax Implementation
 AjaxInWP Brass-Metal uses JavaScript to handle internal link clicks and fetch content dynamically. Below is a brief overview of how it works:
 
