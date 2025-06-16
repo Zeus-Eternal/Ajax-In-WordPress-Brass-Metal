@@ -269,6 +269,7 @@ add_filter('wp_generate_attachment_metadata', 'ajaxinwp_ensure_image_crops', 10,
 function ajaxinwp_register_block_patterns() {
     register_block_pattern_category('ajaxinwp', array('label' => __('AjaxInWP', 'ajaxinwp')));
 
+
     $pattern_dir = get_template_directory() . '/patterns';
     foreach (glob($pattern_dir . '/*.html') as $file) {
         $slug  = 'ajaxinwp/' . basename($file, '.html');
@@ -305,4 +306,16 @@ function ajaxinwp_add_table_of_contents($content) {
     return $content;
 }
 add_filter('the_content', 'ajaxinwp_add_table_of_contents');
+
+    register_block_pattern(
+        'ajaxinwp/hero',
+        array(
+            'title'       => __('Hero Section', 'ajaxinwp'),
+            'categories'  => array('ajaxinwp'),
+            'content'     => file_get_contents(get_template_directory() . '/patterns/hero.html'),
+        )
+    );
+}
+add_action('init', 'ajaxinwp_register_block_patterns');
+
 ?>
