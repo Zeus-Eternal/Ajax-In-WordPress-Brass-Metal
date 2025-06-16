@@ -65,6 +65,7 @@ function ajaxinwp_styles_and_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), filemtime(get_template_directory() . '/assets/js/bootstrap.bundle.min.js'), true);
     wp_enqueue_script('ajaxinwp-js', get_template_directory_uri() . '/assets/js/ajaxinwp.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_enqueue_script('ajaxinwp-image-fallback', get_template_directory_uri() . '/assets/js/image-fallback.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('custom-logo-script', get_template_directory_uri() . '/assets/js/logo.js', [], wp_get_theme()->get('Version'), true);
 
     // Localize script
@@ -72,7 +73,8 @@ function ajaxinwp_styles_and_scripts() {
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('ajaxinwp_nonce'),
         'homeURL'  => get_home_url(),
-        'isHome'   => is_home() || is_front_page()
+        'isHome'   => is_home() || is_front_page(),
+        'fallbackImage' => get_template_directory_uri() . '/assets/img/fallback1080x720.jpg'
     ));
 
     // Add inline script
