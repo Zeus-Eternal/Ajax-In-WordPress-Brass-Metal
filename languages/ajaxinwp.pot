@@ -1,23 +1,6 @@
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
 #: comments.php:62
 msgid "Leave a Reply"
 msgstr ""
-
 #: comments.php:63
 msgid "Your email address will not be published."
 msgstr ""
