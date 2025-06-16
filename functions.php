@@ -314,5 +314,3 @@ function ajaxinwp_add_table_of_contents($content) {
 }
 add_filter('the_content', 'ajaxinwp_add_table_of_contents');
 
-?>
-
