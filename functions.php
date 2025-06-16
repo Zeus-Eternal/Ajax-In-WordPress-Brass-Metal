@@ -4,6 +4,9 @@
  * Get post thumbnail or fallback image.
  */
 function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') {
+    if ( ! get_theme_mod('ajaxinwp_show_featured', true) ) {
+        return '';
+    }
     if (has_post_thumbnail($post_id)) {
         return get_the_post_thumbnail($post_id, $size, $attr);
     }
@@ -33,6 +36,21 @@ AjaxinWP_Theme::get_instance();
 AjaxinWP_Customizer::init();
 AjaxinWP_CSS_Generator::init();
 AjaxinWP_Widgets::init();
+ 
+
+if ( ! function_exists( 'is_ajax_request' ) ) {
+    /**
+     * Check if the current request is an AJAX call.
+     *
+     * @return bool True when the request is via XHR.
+     */
+    function is_ajax_request() {
+        return isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) &&
+            strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) === 'xmlhttprequest';
+    }
+}
+
+ 
 
 /**
  * Print HTML with meta information for the current post-date/time.
