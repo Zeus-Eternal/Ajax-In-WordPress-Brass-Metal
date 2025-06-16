@@ -18,10 +18,12 @@ class AjaxinWP_Theme {
 
     /** Constructor - register hooks */
     private function __construct() {
+        add_action( 'after_setup_theme', [ $this, 'setup_theme' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
         add_action( 'customize_preview_init', [ $this, 'customize_preview_js' ] );
         add_action( 'template_redirect', [ $this, 'handle_ajax_requests' ] );
         add_filter( 'wp_generate_attachment_metadata', [ $this, 'ensure_image_crops' ], 10, 2 );
+        add_filter( 'wp_get_attachment_image_attributes', [ $this, 'image_fallback_attr' ] );
         add_action( 'init', [ $this, 'register_block_patterns' ] );
         add_filter( 'the_content', [ $this, 'add_table_of_contents' ] );
     }
@@ -106,7 +108,16 @@ class AjaxinWP_Theme {
                 $image_path = get_attached_file( $attachment_id );
                 $editor     = wp_get_image_editor( $image_path );
                 if ( ! is_wp_error( $editor ) ) {
-                    $editor->resize( get_option( "{$size}_size_w" ), get_option( "{$size}_size_h" ), true );
+                    if ( 'ajaxinwp-feature' === $size ) {
+                        $width  = absint( get_theme_mod( 'ajaxinwp_feature_width', 1080 ) );
+                        $height = absint( get_theme_mod( 'ajaxinwp_feature_height', 720 ) );
+                        $crop   = get_theme_mod( 'ajaxinwp_feature_crop', true ) ? true : false;
+                    } else {
+                        $width  = get_option( "{$size}_size_w" );
+                        $height = get_option( "{$size}_size_h" );
+                        $crop   = true;
+                    }
+                    $editor->resize( $width, $height, $crop );
                     $resized = $editor->save();
                     if ( ! is_wp_error( $resized ) ) {
                         $metadata['sizes'][ $size ] = [
@@ -156,6 +167,57 @@ class AjaxinWP_Theme {
         }
         return $content;
     }
+
+    /**
+     * Theme setup.
+     */
+    public function setup_theme() {
+        load_theme_textdomain( 'ajaxinwp', get_template_directory() . '/languages' );
+        add_theme_support( 'automatic-feed-links' );
+        add_theme_support( 'title-tag' );
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'customize-selective-refresh-widgets' );
+        add_theme_support( 'custom-logo', [
+            'height'      => 'auto',
+            'width'       => 400,
+            'flex-width'  => true,
+            'flex-height' => true,
+        ] );
+        add_theme_support( 'align-wide' );
+        add_theme_support( 'responsive-embeds' );
+        add_theme_support( 'wp-block-styles' );
+        add_theme_support( 'block-templates' );
+        add_theme_support( 'editor-styles' );
+        add_editor_style( 'assets/css/editor-style.css' );
+
+        register_nav_menus(
+            [
+                'primary' => esc_html__( 'Primary Menu', 'ajaxinwp' ),
+                'top'     => esc_html__( 'Top Menu', 'ajaxinwp' ),
+                'footer'  => esc_html__( 'Footer Menu', 'ajaxinwp' ),
+            ]
+        );
+
+        add_image_size( 'ajaxinwp-thumb', 400, 400, true );
+
+        $feature_w   = absint( get_theme_mod( 'ajaxinwp_feature_width', 1080 ) );
+        $feature_h   = absint( get_theme_mod( 'ajaxinwp_feature_height', 720 ) );
+        $feature_crop = get_theme_mod( 'ajaxinwp_feature_crop', true ) ? true : false;
+        add_image_size( 'ajaxinwp-feature', $feature_w, $feature_h, $feature_crop );
+    }
+
+    /**
+     * Add onerror fallback to attachment images.
+     */
+    public function image_fallback_attr( $attr ) {
+        $fallback = get_theme_mod( 'ajaxinwp_fallback_image' );
+        if ( ! $fallback ) {
+            $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+        }
+        $attr['onerror'] = "this.onerror=null;this.dataset.fallbackLoaded=true;this.src='" . esc_js( $fallback ) . "'";
+        return $attr;
+    }
+
 }
 
 AjaxinWP_Theme::get_instance();
