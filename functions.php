@@ -4,6 +4,9 @@
  * Get post thumbnail or fallback image.
  */
 function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') {
+    if ( ! get_theme_mod('ajaxinwp_show_featured', true) ) {
+        return '';
+    }
     if (has_post_thumbnail($post_id)) {
         return get_the_post_thumbnail($post_id, $size, $attr);
     }

@@ -16,9 +16,10 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
 - **Image Fallbacks**: Missing images automatically display a default placeholder.
 - **Customizable Fallback Image**: Set your own placeholder image in the Customizer.
+- **Featured Image Controls**: Toggle featured images and define crop size directly in the Customizer.
 - **Auto Dark/Light Mode**: Choose "Auto" to follow your device's color preference.
  
-- **Admin Color Integration**: WordPress admin screens adopt your chosen theme colors.
+- **Admin Color Integration**: Customize the admin palette to match your brand.
 - **Resilient Image Handling**: Broken images are replaced client-side for a polished look.
 
 
