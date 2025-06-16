@@ -4,6 +4,9 @@
     "color": {
       "palette": [
  
+
+ 
+ 
         {
           "slug": "primary",
           "color": "#0073aa",
@@ -19,23 +22,32 @@
           "color": "#f0f0f0",
           "name": "Tertiary"
         }
+ 
+
 
         {"slug": "primary", "color": "#0073aa", "name": "Primary"},
         {"slug": "secondary", "color": "#005177", "name": "Secondary"},
         {"slug": "tertiary", "color": "#f0f0f0", "name": "Tertiary"}
+ 
  
       ]
     },
     "typography": {
       "fontFamilies": [
  
+
+ 
+ 
         {
           "slug": "system",
           "fontFamily": "system-ui, sans-serif",
           "name": "System"
         }
+ 
+
 
         {"slug": "system", "fontFamily": "system-ui, sans-serif", "name": "System"}
+ 
  
       ]
     },
@@ -43,6 +55,9 @@
       "contentSize": "650px",
       "wideSize": "1000px"
     }
+ 
+
+ 
  
   },
   "templateParts": [
@@ -55,7 +70,10 @@
       "slug": "footer"
     }
   ]
+ 
+
 
   }
+ 
  
 }

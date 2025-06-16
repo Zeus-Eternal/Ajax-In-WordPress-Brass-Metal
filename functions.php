@@ -47,6 +47,8 @@ function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') 
     }
 }
 
+ 
+
 /**
  * Enqueue theme styles and scripts.
  */
@@ -98,6 +100,7 @@ function ajaxinwp_customize_preview_js() {
     wp_enqueue_script('ajaxinwp_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array('customize-preview'), wp_get_theme()->get('Version'), true);
 }
 add_action('customize_preview_init', 'ajaxinwp_customize_preview_js');
+ 
 
 /**
  * Add support for Gutenberg editor styles.
@@ -193,6 +196,10 @@ if (!function_exists('ajaxinwp_entry_footer')) :
         );
     }
 endif;
+
+
+require_once get_template_directory() . '/inc/class-ajaxinwp-theme.php';
+AjaxinWP_Theme::get_instance();
 
 /**
  * Handle AJAX requests and load the appropriate content.
@@ -318,4 +325,6 @@ add_filter('the_content', 'ajaxinwp_add_table_of_contents');
 }
 add_action('init', 'ajaxinwp_register_block_patterns');
 
+
 ?>
+
