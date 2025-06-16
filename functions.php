@@ -41,17 +41,24 @@ add_action('after_setup_theme', 'ajaxinwp_setup');
 function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') {
     if (has_post_thumbnail($post_id)) {
         return get_the_post_thumbnail($post_id, $size, $attr);
-    } else {
-        $default_image_url = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
-        return '<img src="' . esc_url($default_image_url) . '" alt="' . esc_attr__('Default Image', 'ajaxinwp') . '" class="attachment-' . esc_attr($size) . ' size-' . esc_attr($size) . ' wp-post-image">';
     }
+
+    $fallback = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback) {
+        $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
+
+    return '<img src="' . esc_url($fallback) . '" alt="' . esc_attr__('Default Image', 'ajaxinwp') . '" class="attachment-' . esc_attr($size) . ' size-' . esc_attr($size) . ' wp-post-image">';
 }
 
 /**
  * Add onerror fallback to attachment images.
  */
 function ajaxinwp_image_fallback_attr($attr) {
-    $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    $fallback = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback) {
+        $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
     $attr['onerror'] = "this.onerror=null;this.dataset.fallbackLoaded=true;this.src='" . esc_js($fallback) . "'";
     return $attr;
 }
@@ -76,19 +83,27 @@ function ajaxinwp_styles_and_scripts() {
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), filemtime(get_template_directory() . '/assets/js/bootstrap.bundle.min.js'), true);
     wp_enqueue_script('ajaxinwp-js', get_template_directory_uri() . '/assets/js/ajaxinwp.js', array('jquery'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('ajaxinwp-image-fallback', get_template_directory_uri() . '/assets/js/image-fallback.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
+    wp_enqueue_script('ajaxinwp-theme-switcher', get_template_directory_uri() . '/assets/js/theme-switcher.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('custom-logo-script', get_template_directory_uri() . '/assets/js/logo.js', [], wp_get_theme()->get('Version'), true);
 
     // Localize script
+    $fallback_image = get_theme_mod('ajaxinwp_fallback_image');
+    if (!$fallback_image) {
+        $fallback_image = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    }
+
     wp_localize_script('ajaxinwp-js', 'ajaxinwp_params', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('ajaxinwp_nonce'),
         'homeURL'  => get_home_url(),
         'isHome'   => is_home() || is_front_page(),
-        'fallbackImage' => get_template_directory_uri() . '/assets/img/fallback1080x720.jpg'
+        'fallbackImage' => esc_url($fallback_image)
     ));
 
-    // Add inline script
-    wp_add_inline_script('ajaxinwp-js', 'document.body.dataset.theme = "' . esc_js(get_theme_mod('ajaxinwp_color_scheme', 'auto')) . '";', 'before');
+    wp_localize_script('ajaxinwp-theme-switcher', 'ajaxinwp_theme', array(
+        'theme' => get_theme_mod('ajaxinwp_color_scheme', 'auto')
+    ));
+
 
     // Enqueue comment reply script on singular pages with open comments
     if (is_singular() && comments_open() && get_option('thread_comments')) {

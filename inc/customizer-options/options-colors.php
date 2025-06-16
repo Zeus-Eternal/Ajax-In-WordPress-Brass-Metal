@@ -7,7 +7,7 @@
 
     // Add Color Scheme Setting
     $wp_customize->add_setting('ajaxinwp_color_scheme', [
-        'default'           => 'dark',
+        'default'           => 'auto',
         'transport'         => 'refresh',
         'sanitize_callback' => 'ajaxinwp_sanitize_color_scheme',
     ]);
@@ -18,16 +18,17 @@
         'settings' => 'ajaxinwp_color_scheme',
         'type'     => 'radio',
         'choices'  => [
+            'auto'  => __('Auto', 'ajaxinwp'),
             'color' => __('Color', 'ajaxinwp'),
-            'light'  => __('Light', 'ajaxinwp'),
-            'dark'   => __('Dark', 'ajaxinwp'),
+            'light' => __('Light', 'ajaxinwp'),
+            'dark'  => __('Dark', 'ajaxinwp'),
         ],
     ]);
 add_action('customize_register', 'ajaxinwp_customize_register');
     // Sanitize the input
     function ajaxinwp_sanitize_color_scheme($input) {
-        $valid = ['color', 'light', 'dark'];
-        return in_array($input, $valid, true) ? $input : 'color'; // Fallback to 'color' as default
+        $valid = ['auto', 'color', 'light', 'dark'];
+        return in_array($input, $valid, true) ? $input : 'auto'; // Fallback to auto
     }
 
     // Add other color settings with defaults and sanitization

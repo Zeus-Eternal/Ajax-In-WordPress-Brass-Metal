@@ -53,6 +53,7 @@ function ajaxinwp_customize_register($wp_customize) {
     require_once get_template_directory() . '/inc/customizer-options/options-javascripts.php';
     require_once get_template_directory() . '/inc/customizer-options/options-layout.php';
     require_once get_template_directory() . '/inc/customizer-options/options-typography.php';
+    require_once get_template_directory() . '/inc/customizer-options/options-images.php';
     require_once get_template_directory() . '/inc/customizer-options/options-widgets-settings.php';
 }
 
