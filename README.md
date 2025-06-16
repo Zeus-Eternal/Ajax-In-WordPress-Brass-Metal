@@ -2,6 +2,7 @@
 
 ## Overview
 AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a rich user experience with advanced features. It leverages Ajax for dynamic content loading, ensuring smooth transitions and an enhanced user experience. Ideal for both developers looking for a robust starting point and end-users who want a ready-to-use solution.
+**Version 1.5.0**
 
 ## Features
 - **Ajax-Powered**: Dynamic content loading without page refreshes.
@@ -9,6 +10,7 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Developer-Friendly**: Easy to customize and extend.
 - **Theme Modes**: Supports Dark, Light, and Color modes for different visual preferences.
 - **Block Theme Ready**: Includes `theme.json` for full site editing support.
+- **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
  
 - **Multiple Block Templates**: Includes templates for posts, pages, archives, and 404 screens.
 - **Block Patterns**: Reusable layout patterns registered via PHP.
