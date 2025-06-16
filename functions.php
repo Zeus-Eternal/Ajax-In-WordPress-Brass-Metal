@@ -47,6 +47,16 @@ function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') 
     }
 }
 
+/**
+ * Add onerror fallback to attachment images.
+ */
+function ajaxinwp_image_fallback_attr($attr) {
+    $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+    $attr['onerror'] = "this.onerror=null;this.dataset.fallbackLoaded=true;this.src='" . esc_js($fallback) . "'";
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'ajaxinwp_image_fallback_attr');
+
  
 
 /**
@@ -65,6 +75,7 @@ function ajaxinwp_styles_and_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), filemtime(get_template_directory() . '/assets/js/bootstrap.bundle.min.js'), true);
     wp_enqueue_script('ajaxinwp-js', get_template_directory_uri() . '/assets/js/ajaxinwp.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_enqueue_script('ajaxinwp-image-fallback', get_template_directory_uri() . '/assets/js/image-fallback.js', array('ajaxinwp-js'), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('custom-logo-script', get_template_directory_uri() . '/assets/js/logo.js', [], wp_get_theme()->get('Version'), true);
 
     // Localize script
@@ -72,7 +83,8 @@ function ajaxinwp_styles_and_scripts() {
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('ajaxinwp_nonce'),
         'homeURL'  => get_home_url(),
-        'isHome'   => is_home() || is_front_page()
+        'isHome'   => is_home() || is_front_page(),
+        'fallbackImage' => get_template_directory_uri() . '/assets/img/fallback1080x720.jpg'
     ));
 
     // Add inline script
@@ -313,6 +325,20 @@ function ajaxinwp_add_table_of_contents($content) {
     return $content;
 }
 add_filter('the_content', 'ajaxinwp_add_table_of_contents');
+
+/**
+ * Apply theme colors to WordPress admin area for better UX.
+ */
+function ajaxinwp_admin_styles() {
+    $primary = sanitize_hex_color(get_theme_mod('ajaxinwp_color_primary', '#0d6efd'));
+    $secondary = sanitize_hex_color(get_theme_mod('ajaxinwp_color_secondary', '#6c757d'));
+    echo '<style>
+        #adminmenu, #wpadminbar { background:' . esc_attr($primary) . '; }
+        #adminmenu .wp-submenu, #adminmenu .wp-has-current-submenu .wp-submenu { background:' . esc_attr($secondary) . '; }
+        #adminmenu a, #wpadminbar a { color:#fff; }
+    </style>';
+}
+add_action('admin_head', 'ajaxinwp_admin_styles');
 
 ?>
 
