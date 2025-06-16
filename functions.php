@@ -33,6 +33,7 @@ AjaxinWP_Theme::get_instance();
 AjaxinWP_Customizer::init();
 AjaxinWP_CSS_Generator::init();
 AjaxinWP_Widgets::init();
+ 
 
 if ( ! function_exists( 'is_ajax_request' ) ) {
     /**
@@ -45,6 +46,8 @@ if ( ! function_exists( 'is_ajax_request' ) ) {
             strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) === 'xmlhttprequest';
     }
 }
+
+ 
 
 /**
  * Print HTML with meta information for the current post-date/time.
