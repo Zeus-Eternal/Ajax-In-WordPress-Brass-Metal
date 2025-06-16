@@ -8,6 +8,9 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Fully Styled**: Ready-to-use with beautiful design elements.
 - **Developer-Friendly**: Easy to customize and extend.
 - **Theme Modes**: Supports Dark, Light, and Color modes for different visual preferences.
+- **Block Theme Ready**: Includes `theme.json` for full site editing support.
+- **Block Patterns**: Reusable layout patterns registered via PHP.
+- **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
 
 ## Why Ajax?
 
@@ -54,8 +57,17 @@ By leveraging Ajax, developers can create more engaging, efficient, and interact
 3. **Activate the Theme**: After installation, click `Activate` to start using AjaxInWP Brass-Metal.
 
 ## Usage
-1. **Customize the Theme**: Utilize the WordPress Customizer to add your own styles and configurations.
+1. **Customize the Theme**: Utilize the WordPress Customizer and `theme.json` to add your own styles and configurations.
 2. **Implement Ajax**: Follow the included documentation to implement Ajax-based content loading for your site.
+
+## Asset Bundling
+All third-party CSS and JavaScript libraries are bundled in the `assets/` directory. This keeps your site independent of external CDNs and allows offline development. Update these files as needed, then run `wp_enqueue_style` and `wp_enqueue_script` versioning via `filemtime()` ensures browsers get the latest versions.
+
+## Block Theme Support
+This version introduces a `theme.json` file, enabling WordPress Full Site Editing features. Customize global colors, fonts, and layout directly through the Site Editor.
+
+## Block Patterns
+Predefined block patterns help you build pages faster. The theme registers a simple hero pattern which you can insert from the block inserter under the **AjaxInWP** category.
 
 ## Ajax Implementation
 AjaxInWP Brass-Metal uses JavaScript to handle internal link clicks and fetch content dynamically. Below is a brief overview of how it works:
@@ -285,8 +297,11 @@ To add new settings and controls to the customizer, you can use the following pa
 
 By following these patterns, you can expand the customizer options to suit your theme's requirements. For more advanced customization, refer to the WordPress Codex or the Theme Customization API documentation.
 
+## Translations
+Translation templates reside in the `languages/` directory. Generate updated `.po` files with tools like `xgettext` or the WordPress CLI and save compiled `.mo` files in the same folder so WordPress can load them automatically.
+
 ## Contributions
 We welcome contributions from the community. Please submit issues and pull requests to the [GitHub repository](https://github.com/agustealo/Ajax-In-WordPress-Brass-Metal).
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/agustealo/Ajax-In-WordPress-Brass-Metal/blob/main/LICENSE) file for details.
+This project is licensed under the GNU General Public License version 3 or later. See the [LICENSE](https://github.com/agustealo/Ajax-In-WordPress-Brass-Metal/blob/main/LICENSE) file for details.
