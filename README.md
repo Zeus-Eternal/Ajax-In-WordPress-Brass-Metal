@@ -66,7 +66,7 @@ By leveraging Ajax, developers can create more engaging, efficient, and interact
 All third-party CSS and JavaScript libraries are bundled in the `assets/` directory. This keeps your site independent of external CDNs and allows offline development. Update these files as needed, then run `wp_enqueue_style` and `wp_enqueue_script` versioning via `filemtime()` ensures browsers get the latest versions.
 
 ## Block Theme Support
-This version introduces a `theme.json` file, enabling WordPress Full Site Editing features. Customize global colors, fonts, and layout directly through the Site Editor.
+This version introduces a `theme.json` file and default block templates. You can manage global styles and edit templates directly in the Site Editor. The `templates/` directory contains `index.html` and `single.html` plus reusable parts under `parts/`.
 
 ## Block Patterns
 Premium block patterns help you build pages faster. All patterns are registered under the **AjaxInWP** category and include the following examples:
