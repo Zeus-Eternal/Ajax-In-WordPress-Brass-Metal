@@ -314,17 +314,5 @@ function ajaxinwp_add_table_of_contents($content) {
 }
 add_filter('the_content', 'ajaxinwp_add_table_of_contents');
 
-    register_block_pattern(
-        'ajaxinwp/hero',
-        array(
-            'title'       => __('Hero Section', 'ajaxinwp'),
-            'categories'  => array('ajaxinwp'),
-            'content'     => file_get_contents(get_template_directory() . '/patterns/hero.html'),
-        )
-    );
-}
-add_action('init', 'ajaxinwp_register_block_patterns');
-
-
 ?>
 
