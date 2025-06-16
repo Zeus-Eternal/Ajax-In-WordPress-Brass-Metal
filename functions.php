@@ -142,5 +142,8 @@ if (!function_exists('ajaxinwp_entry_footer')) :
         );
     }
 endif;
+
+require_once get_template_directory() . '/inc/class-ajaxinwp-theme.php';
+AjaxinWP_Theme::get_instance();
 ?>
 
