@@ -182,7 +182,7 @@ class AjaxinWP_CSS_Generator {
             }
         }
 
-        $css  = '<style type="text/css">';
+        $css  = '';
         $css .= self::generate_css_variables( $common_variables );
         $css .= self::generate_theme_css( 'dark', $dark_variables );
         $css .= self::generate_theme_css( 'light', $light_variables );
@@ -197,7 +197,6 @@ class AjaxinWP_CSS_Generator {
         if ( $logo_desktop_dark ) {
             $css .= 'body[data-theme="dark"] .custom-logo-link img{content:url(' . esc_url( $logo_desktop_dark ) . ');}';
         }
-        $css .= '</style>';
         return $css;
     }
 
