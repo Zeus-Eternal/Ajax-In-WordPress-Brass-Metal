@@ -67,7 +67,25 @@ All third-party CSS and JavaScript libraries are bundled in the `assets/` direct
 This version introduces a `theme.json` file, enabling WordPress Full Site Editing features. Customize global colors, fonts, and layout directly through the Site Editor.
 
 ## Block Patterns
-Predefined block patterns help you build pages faster. The theme registers a simple hero pattern which you can insert from the block inserter under the **AjaxInWP** category.
+Premium block patterns help you build pages faster. All patterns are registered under the **AjaxInWP** category and include the following examples:
+
+1. **Hero Section**
+2. **Features Grid**
+3. **About Section**
+4. **Services Overview**
+5. **Pricing Tables**
+6. **Testimonials**
+7. **Team Members**
+8. **Image Gallery**
+9. **Call to Action**
+10. **Newsletter Signup**
+11. **FAQ List**
+12. **Contact Section**
+13. **Posts Grid**
+14. **Banner Header**
+15. **Footer Call to Action**
+
+Insert any of these patterns from the block inserter to quickly compose rich layouts.
 
 ## Ajax Implementation
 AjaxInWP Brass-Metal uses JavaScript to handle internal link clicks and fetch content dynamically. Below is a brief overview of how it works:
