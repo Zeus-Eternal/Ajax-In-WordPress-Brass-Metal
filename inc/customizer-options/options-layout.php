@@ -45,6 +45,24 @@ $wp_customize->add_control('ajaxinwp_navigation_layout', [
     ],
 ]);
 
+// Menu Style Setting and Control
+$wp_customize->add_setting('ajaxinwp_menu_style', [
+    'default'           => 'navbar',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'ajaxinwp_sanitize_menu_style',
+]);
+$wp_customize->add_control('ajaxinwp_menu_style', [
+    'label'    => __('Menu Style', 'ajaxinwp'),
+    'section'  => 'ajaxinwp_layout_options',
+    'settings' => 'ajaxinwp_menu_style',
+    'type'     => 'select',
+    'choices'  => [
+        'navbar'         => __('Top Navbar', 'ajaxinwp'),
+        'offcanvas-left' => __('Offcanvas Left', 'ajaxinwp'),
+        'offcanvas-right'=> __('Offcanvas Right', 'ajaxinwp'),
+    ],
+]);
+
 // Header Layout Setting and Control
 $wp_customize->add_setting('ajaxinwp_header_layout', [
     'default'           => 'container',
@@ -127,6 +145,12 @@ function ajaxinwp_sanitize_navigation_position($input) {
 function ajaxinwp_sanitize_navigation_layout($input) {
     $valid = ['default', 'container', 'container-fluid'];
     return in_array($input, $valid, true) ? $input : 'container';
+}
+
+// Sanitize Menu Style
+function ajaxinwp_sanitize_menu_style($input) {
+    $valid = ['navbar', 'offcanvas-left', 'offcanvas-right'];
+    return in_array($input, $valid, true) ? $input : 'navbar';
 }
 
 // Sanitize Header Layout

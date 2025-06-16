@@ -61,8 +61,6 @@ add_action('customize_register', 'ajaxinwp_customize_register');
         'ajaxinwp_light_secondary' => ['default' => '#e9ecef', 'sanitize_callback' => 'sanitize_hex_color'],
         'ajaxinwp_light_accent_primary' => ['default' => '#0d6efd', 'sanitize_callback' => 'sanitize_hex_color'],
         'ajaxinwp_light_accent_secondary' => ['default' => '#6610f2', 'sanitize_callback' => 'sanitize_hex_color'],
-        'ajaxinwp_admin_primary' => ['default' => '#0d6efd', 'sanitize_callback' => 'sanitize_hex_color'],
-        'ajaxinwp_admin_secondary' => ['default' => '#6c757d', 'sanitize_callback' => 'sanitize_hex_color'],
     ];
 
     foreach ($settings as $setting => $args) {
