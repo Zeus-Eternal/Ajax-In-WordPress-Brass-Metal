@@ -359,6 +359,8 @@ tbody+tbody {
     right: 0;
     z-index: 100;
     clear: both;
+    font-family: var(--nav-font-family);
+    font-weight: var(--nav-font-weight);
 }
 
 a.nav-link {
@@ -572,4 +574,16 @@ ol {
 #ajax-container {
     /* other styles */
     transition: opacity 0.5s ease;
+}
+
+/* Table of Contents */
+.ajaxinwp-toc {
+    background-color: var(--primary-accent-color);
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border: 1px solid var(--border-color);
+}
+.ajaxinwp-toc ol {
+    padding-left: 1.25em;
+    margin: 0;
 }

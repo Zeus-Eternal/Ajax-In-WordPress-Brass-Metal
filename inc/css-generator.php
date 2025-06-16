@@ -88,6 +88,12 @@ function ajaxinwp_customizer_css() {
             'dark' => sanitize_hex_color(get_theme_mod('ajaxinwp_dark_accent_secondary', '#beb4f7')),
             'light' => sanitize_hex_color(get_theme_mod('ajaxinwp_light_accent_secondary', '#0056b3')),
         ],
+        '--nav-font-family' => [
+            'color' => sanitize_text_field(get_theme_mod('ajaxinwp_nav_font', 'Roboto, sans-serif')),
+        ],
+        '--nav-font-weight' => [
+            'color' => sanitize_text_field(get_theme_mod('ajaxinwp_nav_font_weight', 'normal')),
+        ],
         '--header-bg-color' => [
             'color' => sanitize_hex_color(get_theme_mod('ajaxinwp_Header1_bg_color', '#f8f9fa')),
             'dark' => sanitize_hex_color(get_theme_mod('ajaxinwp_dark_secondary', '#161b22')),
