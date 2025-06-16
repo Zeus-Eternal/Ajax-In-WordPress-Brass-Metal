@@ -10,24 +10,12 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Developer-Friendly**: Easy to customize and extend.
 - **Theme Modes**: Supports Dark, Light, and Color modes for different visual preferences.
 - **Block Theme Ready**: Includes `theme.json` for full site editing support.
- 
-
- 
- 
-- **Multiple Block Templates**: Includes templates for posts, pages, archives, and 404 screens.
+- **Multiple Block Templates**: Templates for posts, pages, archives, and 404 screens.
 - **Block Patterns**: Reusable layout patterns registered via PHP.
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
 - **Flexible Navigation**: Multiple menu locations and customizable fonts.
 - **Automatic Table of Contents**: Posts include a generated index for easy navigation.
- 
 - **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
-
-
-- **Block Patterns**: Reusable layout patterns registered via PHP.
-- **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
-
- 
-
 ## Why Ajax?
 
 Ajax (Asynchronous JavaScript and XML) is a powerful web development technique that allows for the asynchronous loading and updating of content without requiring a full page refresh. This technology enhances the user experience by making web applications faster, more responsive, and interactive. 
@@ -113,10 +101,6 @@ Insert any of these patterns from the block inserter to quickly compose rich lay
 Each post automatically displays a table of contents based on its headings. This helps readers navigate long articles more easily.
 
  
-
-
-## Block Patterns
-Predefined block patterns help you build pages faster. The theme registers a simple hero pattern which you can insert from the block inserter under the **AjaxInWP** category.
 
 
  
