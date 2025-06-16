@@ -14,6 +14,7 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Multiple Block Templates**: Templates for posts, pages, archives, and 404 screens.
 - **Block Patterns**: Reusable layout patterns registered via PHP.
 - **Local Assets**: Bootstrap and Font Awesome are bundled locally for privacy.
+- **Image Fallbacks**: Missing images automatically display a default placeholder.
 - **Flexible Navigation**: Multiple menu locations and customizable fonts.
 - **Automatic Table of Contents**: Posts include a generated index for easy navigation.
 - **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
