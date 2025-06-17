@@ -76,6 +76,13 @@
         } );
     } );
 
+    // Refresh preview when menu style changes
+    wp.customize( 'ajaxinwp_menu_style', function( value ) {
+        value.bind( function() {
+            wp.customize.previewer.refresh();
+        } );
+    } );
+
     wp.customize( 'ajaxinwp_nav_text_color', function( value ) {
         value.bind( function( to ) {
             $( '.navbar, .navbar a' ).css( 'color', to );
@@ -131,4 +138,29 @@
             });
         });
     }
+
+    // Live update for custom logo
+    wp.customize( 'custom_logo', function( value ) {
+        value.bind( function( newVal ) {
+            if ( newVal ) {
+                wp.media.attachment( newVal ).fetch().then( function() {
+                    var url = wp.media.attachment( newVal ).get( 'url' );
+                    $( '.custom-logo-link img' ).attr( 'src', url );
+                } );
+            }
+        } );
+    } );
+
+    // Live update for fallback image
+    wp.customize( 'ajaxinwp_fallback_image', function( value ) {
+        value.bind( function( url ) {
+            ajaxinwp_params.fallbackImage = url;
+            $( '.post-thumbnail img' ).each( function() {
+                var $img = $( this );
+                if ( $img.data( 'fallbackLoaded' ) || $img.attr( 'src' ) === '' ) {
+                    $img.attr( 'src', url );
+                }
+            } );
+        } );
+    } );
 } )( jQuery );

@@ -18,9 +18,10 @@
     <?php wp_body_open(); ?>
     
     <?php
-    // Get navigation layout and position from theme customizer
-    $nav_layout = get_theme_mod('ajaxinwp_navigation_layout', 'container');
-    $nav_position = get_theme_mod('ajaxinwp_navigation_position', 'position-fixed');
+    // Get navigation layout, position and style from the Customizer
+    $nav_layout   = get_theme_mod( 'ajaxinwp_navigation_layout', 'container' );
+    $nav_position = get_theme_mod( 'ajaxinwp_navigation_position', 'position-fixed' );
+    $menu_style   = get_theme_mod( 'ajaxinwp_menu_style', 'navbar' );
     ?>
     
     <div class="row">
@@ -38,23 +39,49 @@
                 ?>
                 
                 <!-- Navbar toggle button for mobile view -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'ajaxinwp'); ?>">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <?php
-                // Display the primary navigation menu
-                wp_nav_menu(array(
-                    'theme_location' => 'primary',
-                    'depth' => 2, // 1 = no dropdowns, 2 = with dropdowns.
-                    'container' => 'div',
-                    'container_class' => 'collapse navbar-collapse',
-                    'container_id' => 'navbarNavDropdown',
-                    'menu_class' => 'navbar-nav me-auto',
-                    'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
-                    'walker' => new WP_Bootstrap_Navwalker(),
-                ));
-                ?>
+                <?php if ( 'navbar' === $menu_style ) : ?>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ajaxinwp' ); ?>">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <?php
+                    wp_nav_menu(
+                        [
+                            'theme_location'  => 'primary',
+                            'depth'           => 2,
+                            'container'       => 'div',
+                            'container_class' => 'collapse navbar-collapse',
+                            'container_id'    => 'navbarNavDropdown',
+                            'menu_class'      => 'navbar-nav me-auto',
+                            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+                            'walker'          => new WP_Bootstrap_Navwalker(),
+                        ]
+                    );
+                    ?>
+                <?php else : ?>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#ajaxOffcanvas" aria-controls="ajaxOffcanvas" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ajaxinwp' ); ?>">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas <?php echo ( 'offcanvas-right' === $menu_style ) ? 'offcanvas-end' : 'offcanvas-start'; ?>" tabindex="-1" id="ajaxOffcanvas">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="<?php esc_attr_e( 'Close', 'ajaxinwp' ); ?>"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <?php
+                            wp_nav_menu(
+                                [
+                                    'theme_location'  => 'primary',
+                                    'depth'           => 2,
+                                    'container'       => false,
+                                    'menu_class'      => 'navbar-nav',
+                                    'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+                                    'walker'          => new WP_Bootstrap_Navwalker(),
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </nav>
     </div>
@@ -71,5 +98,3 @@
             <?php endif; ?>
         </div>
     </header>
-</body>
-</html>
