@@ -19,6 +19,16 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 - **Featured Image Controls**: Toggle featured images and define crop size directly in the Customizer.
 - **Auto Dark/Light Mode**: Choose "Auto" to follow your device's color preference.
  
+ 
+
+ 
+
+ 
+
+- **Admin Color Integration**: Customize the admin palette to match your brand.
+
+ 
+ 
 - **Resilient Image Handling**: Broken images are replaced client-side for a polished look.
 
 

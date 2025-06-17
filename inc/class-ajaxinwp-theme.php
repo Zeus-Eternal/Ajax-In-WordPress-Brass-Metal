@@ -26,6 +26,7 @@ class AjaxinWP_Theme {
         add_filter( 'wp_get_attachment_image_attributes', [ $this, 'image_fallback_attr' ] );
         add_action( 'init', [ $this, 'register_block_patterns' ] );
         add_filter( 'the_content', [ $this, 'add_table_of_contents' ] );
+        add_action( 'admin_head', [ $this, 'admin_styles' ] );
     }
 
     /**
@@ -235,6 +236,27 @@ class AjaxinWP_Theme {
         return $attr;
     }
 
+ 
+
+ 
+
+ 
+
+    /**
+     * Apply theme colors to WordPress admin area for better UX.
+     */
+    public function admin_styles() {
+        $primary   = sanitize_hex_color( get_theme_mod( 'ajaxinwp_admin_primary', '#0d6efd' ) );
+        $secondary = sanitize_hex_color( get_theme_mod( 'ajaxinwp_admin_secondary', '#6c757d' ) );
+        echo '<style>
+            #adminmenu, #wpadminbar { background:' . esc_attr( $primary ) . '; }
+            #adminmenu .wp-submenu, #adminmenu .wp-has-current-submenu .wp-submenu { background:' . esc_attr( $secondary ) . '; }
+            #adminmenu a, #wpadminbar a { color:#fff; }
+        </style>';
+    }
+ 
+ 
+ 
 }
 
 AjaxinWP_Theme::get_instance();
