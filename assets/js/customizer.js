@@ -76,6 +76,13 @@
         } );
     } );
 
+    // Refresh preview when menu style changes
+    wp.customize( 'ajaxinwp_menu_style', function( value ) {
+        value.bind( function() {
+            wp.customize.previewer.refresh();
+        } );
+    } );
+
     wp.customize( 'ajaxinwp_nav_text_color', function( value ) {
         value.bind( function( to ) {
             $( '.navbar, .navbar a' ).css( 'color', to );

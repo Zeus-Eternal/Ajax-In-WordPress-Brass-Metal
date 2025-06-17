@@ -219,6 +219,8 @@ class AjaxinWP_Theme {
         return $attr;
     }
 
+ 
+
     /**
      * Apply theme colors to WordPress admin area for better UX.
      */
@@ -231,6 +233,7 @@ class AjaxinWP_Theme {
             #adminmenu a, #wpadminbar a { color:#fff; }
         </style>';
     }
+ 
 }
 
 AjaxinWP_Theme::get_instance();
