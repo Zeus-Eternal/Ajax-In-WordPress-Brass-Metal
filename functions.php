@@ -25,6 +25,20 @@ function get_post_thumbnail_or_fallback($post_id, $size = 'medium', $attr = '') 
 // Load helper files
 require_once get_template_directory() . '/helpers/bootstrap-menu-walker.php';
 require_once get_template_directory() . '/helpers/bootstrap-comment-walker.php';
+ 
+
+// Load OOP modules
+require_once get_template_directory() . '/inc/class-ajaxinwp-theme.php';
+require_once get_template_directory() . '/inc/class-ajaxinwp-customizer.php';
+require_once get_template_directory() . '/inc/class-ajaxinwp-css-generator.php';
+require_once get_template_directory() . '/inc/class-ajaxinwp-widgets.php';
+
+AjaxinWP_Theme::get_instance();
+AjaxinWP_Customizer::init();
+AjaxinWP_CSS_Generator::init();
+AjaxinWP_Widgets::init();
+
+
 
 // Load OOP modules
 require_once get_template_directory() . '/inc/class-ajaxinwp-theme.php';
@@ -58,6 +72,7 @@ AjaxinWP_CSS_Generator::init();
 AjaxinWP_Widgets::init();
  
 
+ main
 if ( ! function_exists( 'is_ajax_request' ) ) {
     /**
      * Check if the current request is an AJAX call.

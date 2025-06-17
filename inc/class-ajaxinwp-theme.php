@@ -43,13 +43,30 @@ class AjaxinWP_Theme {
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', [ 'jquery' ], filemtime( get_template_directory() . '/assets/js/bootstrap.bundle.min.js' ), true );
         wp_enqueue_script( 'ajaxinwp-js', get_template_directory_uri() . '/assets/js/ajaxinwp.js', [ 'jquery' ], wp_get_theme()->get( 'Version' ), true );
+        wp_enqueue_script( 'image-fallback', get_template_directory_uri() . '/assets/js/image-fallback.js', [], wp_get_theme()->get( 'Version' ), true );
         wp_enqueue_script( 'custom-logo-script', get_template_directory_uri() . '/assets/js/logo.js', [], wp_get_theme()->get( 'Version' ), true );
 
+        $fallback = get_theme_mod( 'ajaxinwp_fallback_image' );
+        if ( ! $fallback ) {
+            $fallback = get_template_directory_uri() . '/assets/img/fallback1080x720.jpg';
+        }
+
         wp_localize_script( 'ajaxinwp-js', 'ajaxinwp_params', [
-            'ajax_url' => admin_url( 'admin-ajax.php' ),
-            'nonce'    => wp_create_nonce( 'ajaxinwp_nonce' ),
-            'homeURL'  => get_home_url(),
-            'isHome'   => is_home() || is_front_page(),
+            'ajax_url'      => admin_url( 'admin-ajax.php' ),
+            'nonce'         => wp_create_nonce( 'ajaxinwp_nonce' ),
+            'homeURL'       => get_home_url(),
+            'isHome'        => is_home() || is_front_page(),
+            'fallbackImage' => esc_url( $fallback ),
+        ] );
+
+        $logo_light = '';
+        $logo_data  = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+        if ( is_array( $logo_data ) ) {
+            $logo_light = $logo_data[0];
+        }
+        wp_localize_script( 'custom-logo-script', 'ajaxinwp_logo', [
+            'dark'  => esc_url( get_theme_mod( 'ajaxinwp_logo_dark' ) ),
+            'light' => esc_url( $logo_light ),
         ] );
 
         wp_add_inline_script( 'ajaxinwp-js', 'document.body.dataset.theme = "' . esc_js( get_theme_mod( 'ajaxinwp_color_scheme', 'auto' ) ) . '";', 'before' );
@@ -219,6 +236,8 @@ class AjaxinWP_Theme {
         return $attr;
     }
 
+ 0kpevw-codex/ensure-oop-and-follow-wp-best-practices
+
  
 
     /**
@@ -233,6 +252,7 @@ class AjaxinWP_Theme {
             #adminmenu a, #wpadminbar a { color:#fff; }
         </style>';
     }
+ 
  
 }
 
