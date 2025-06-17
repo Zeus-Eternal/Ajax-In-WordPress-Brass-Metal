@@ -23,8 +23,11 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 
  
 
+ 
+
 - **Admin Color Integration**: Customize the admin palette to match your brand.
 
+ 
  
 - **Resilient Image Handling**: Broken images are replaced client-side for a polished look.
 

@@ -98,5 +98,3 @@
             <?php endif; ?>
         </div>
     </header>
-</body>
-</html>

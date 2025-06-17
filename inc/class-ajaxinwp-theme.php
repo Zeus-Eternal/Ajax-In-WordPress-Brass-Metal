@@ -236,7 +236,9 @@ class AjaxinWP_Theme {
         return $attr;
     }
 
- 0kpevw-codex/ensure-oop-and-follow-wp-best-practices
+ 
+
+ 
 
  
 
@@ -252,6 +254,7 @@ class AjaxinWP_Theme {
             #adminmenu a, #wpadminbar a { color:#fff; }
         </style>';
     }
+ 
  
  
 }
