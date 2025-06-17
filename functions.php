@@ -31,6 +31,7 @@ require_once get_template_directory() . '/inc/class-ajaxinwp-theme.php';
 require_once get_template_directory() . '/inc/class-ajaxinwp-customizer.php';
 require_once get_template_directory() . '/inc/class-ajaxinwp-css-generator.php';
 require_once get_template_directory() . '/inc/class-ajaxinwp-widgets.php';
+ 
 
 AjaxinWP_Theme::get_instance();
 AjaxinWP_Customizer::init();
@@ -49,6 +50,29 @@ if ( ! function_exists( 'is_ajax_request' ) ) {
     }
 }
 
+
+
+AjaxinWP_Theme::get_instance();
+AjaxinWP_Customizer::init();
+AjaxinWP_CSS_Generator::init();
+AjaxinWP_Widgets::init();
+ 
+
+if ( ! function_exists( 'is_ajax_request' ) ) {
+    /**
+     * Check if the current request is an AJAX call.
+     *
+     * @return bool True when the request is via XHR.
+     */
+    function is_ajax_request() {
+        return isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) &&
+            strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) === 'xmlhttprequest';
+    }
+}
+
+ 
+
+ 
 /**
  * Print HTML with meta information for the current post-date/time.
  */
