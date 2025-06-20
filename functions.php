@@ -110,6 +110,19 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
             ]
         );
     }
+                'title' => __( 'Edit Site', 'ajaxinwp' ),
+                'href'  => admin_url( 'site-editor.php' ),
+            ]
+        );
+    }
+
+    $wp_admin_bar->add_node(
+        [
+            'id'    => 'ajaxinwp-theme-editor',
+            'title' => __( 'Theme File Editor', 'ajaxinwp' ),
+            'href'  => admin_url( 'theme-editor.php' ),
+        ]
+    );
 }
 add_action( 'admin_bar_menu', 'ajaxinwp_admin_bar_links', 80 );
 
