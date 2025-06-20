@@ -33,7 +33,7 @@ AjaxInWP Brass-Metal is a fully styled WordPress theme designed to provide a ric
 
 
 - **Flexible Navigation**: Multiple menu locations and new offcanvas or navbar menu styles.
-- **Automatic Table of Contents**: Posts include a generated index for easy navigation.
+- **Automatic Table of Contents**: Posts and pages include a generated table of contents linking to headings for easy navigation.
 - **OOP Architecture**: Core features are encapsulated in the `AjaxinWP_Theme` class for cleaner code.
 ## Why Ajax?
 
@@ -121,7 +121,7 @@ Premium block patterns help you build pages faster. All patterns are registered 
 Insert any of these patterns from the block inserter to quickly compose rich layouts.
 
 ## Table of Contents
-Each post automatically displays a table of contents based on its headings. This helps readers navigate long articles more easily.
+Each article automatically displays a table of contents based on its headings. This helps readers navigate long articles more easily.
 
  
 
