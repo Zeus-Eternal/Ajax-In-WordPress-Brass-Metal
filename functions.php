@@ -92,6 +92,12 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
                 'id'     => 'ajaxinwp-site-editor',
                 'title'  => __( 'Site Editor', 'ajaxinwp' ),
                 'href'   => admin_url( 'site-editor.php' ),
+    if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+        $wp_admin_bar->add_node(
+            [
+                'id'    => 'ajaxinwp-site-editor',
+                'title' => __( 'Site Editor', 'ajaxinwp' ),
+                'href'  => admin_url( 'site-editor.php' ),\
             ]
         );
     } else {
@@ -116,6 +122,35 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
             ]
         );
     }
+                'id'    => 'ajaxinwp-customize',
+                'title' => __( 'Customize', 'ajaxinwp' ),
+                'href'  => admin_url( 'customize.php' ),
+            ]
+        );
+    }
+
+    if ( current_user_can( 'edit_themes' ) ) {
+        $wp_admin_bar->add_node(
+            [
+                'id'    => 'ajaxinwp-theme-editor',
+                'title' => __( 'Theme File Editor', 'ajaxinwp' ),
+                'href'  => admin_url( 'theme-editor.php' ),
+            ]
+        );
+    }
+                'title' => __( 'Edit Site', 'ajaxinwp' ),
+                'href'  => admin_url( 'site-editor.php' ),
+            ]
+        );
+    }
+
+    $wp_admin_bar->add_node(
+        [
+            'id'    => 'ajaxinwp-theme-editor',
+            'title' => __( 'Theme File Editor', 'ajaxinwp' ),
+            'href'  => admin_url( 'theme-editor.php' ),
+        ]
+    );
 }
 add_action( 'admin_bar_menu', 'ajaxinwp_admin_bar_links', 80 );
 

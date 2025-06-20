@@ -64,4 +64,7 @@
         <p><?php esc_html_e('No posts found.', 'ajaxinwp'); ?></p>
     <?php endif; ?>
 </div>
-
+<?php
+// Reset any altered global query.
+wp_reset_query();
+?>

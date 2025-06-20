@@ -62,3 +62,7 @@
     <?php endif; ?>
 </div>
 
+<?php
+// Reset any altered global query.
+wp_reset_query();
+?>
