@@ -47,7 +47,9 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 // Check if it's an AJAX request
-function is_ajax_request() {
-    return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+if ( ! function_exists( 'is_ajax_request' ) ) {
+    function is_ajax_request() {
+        return isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) === 'xmlhttprequest';
+    }
 }
 ?>

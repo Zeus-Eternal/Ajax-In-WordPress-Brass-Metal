@@ -13,6 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
+        <div class="post-thumbnail">
+            <a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+                <?php echo get_post_thumbnail_or_fallback( get_the_ID(), 'medium' ); ?>
+            </a>
+            <div class="date-card">
+                <time class="entry-date published updated" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+                    <span class="day"><?php echo esc_html( get_the_date( 'd' ) ); ?></span>
+                    <span class="month"><?php echo esc_html( get_the_date( 'M' ) ); ?></span>
+                    <span class="year"><?php echo esc_html( get_the_date( 'y' ) ); ?></span>
+                </time>
+            </div>
+        </div>
         <?php
         if ( is_singular() ) :
             the_title( '<h1 class="entry-title">', '</h1>' );

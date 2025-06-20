@@ -44,6 +44,10 @@
                         <h2 id="post-title-<?php the_ID(); ?>" class="entry-title">
                             <a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark"><?php the_title(); ?></a>
                         </h2>
+                        <div class="entry-meta">
+                            <?php ajaxinwp_posted_on(); ?>
+                            <?php ajaxinwp_posted_by(); ?>
+                        </div>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
