@@ -65,10 +65,7 @@
     <?php endif; ?>
 </div>
 
-<!-- Ensure no additional loops or nested loops are present -->
 <?php
-// Add any other necessary code here
-
-// Reset the main query if necessary
+// Reset any altered global query.
 wp_reset_query();
 ?>
