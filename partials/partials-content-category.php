@@ -35,6 +35,10 @@
                         <h2 id="post-title-<?php the_ID(); ?>" class="entry-title">
                             <a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark"><?php the_title(); ?></a>
                         </h2>
+                        <div class="entry-meta">
+                            <?php ajaxinwp_posted_on(); ?>
+                            <?php ajaxinwp_posted_by(); ?>
+                        </div>
                         <div class="entry-meta  card-img-overlay">
                             <div class="date-card">
                                 <time class="entry-date published updated" datetime="<?php echo esc_attr(get_the_date('c')); ?>">
@@ -65,10 +69,3 @@
     <?php endif; ?>
 </div>
 
-<!-- Ensure no additional loops or nested loops are present -->
-<?php
-// Add any other necessary code here
-
-// Reset the main query if necessary
-wp_reset_query();
-?>
