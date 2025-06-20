@@ -92,8 +92,9 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
                 'id'     => 'ajaxinwp-site-editor',
                 'title'  => __( 'Site Editor', 'ajaxinwp' ),
                 'href'   => admin_url( 'site-editor.php' ),
-    if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-        $wp_admin_bar->add_node(
+    $file_edit_allowed  = ! defined( 'DISALLOW_FILE_EDIT' ) || ! DISALLOW_FILE_EDIT;
+    $mods_edit_allowed  = ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS;
+    if ( current_user_can( 'edit_themes' ) && $file_edit_allowed && $mods_edit_allowed ) {
             [
                 'id'    => 'ajaxinwp-site-editor',
                 'title' => __( 'Site Editor', 'ajaxinwp' ),
