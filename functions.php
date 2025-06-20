@@ -83,17 +83,45 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
         return;
     }
 
+    $parent = 'site-name';
+
+    if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+        $wp_admin_bar->add_node(
+            [
+                'parent' => $parent,
+                'id'     => 'ajaxinwp-site-editor',
+                'title'  => __( 'Site Editor', 'ajaxinwp' ),
+                'href'   => admin_url( 'site-editor.php' ),
     if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
         $wp_admin_bar->add_node(
             [
                 'id'    => 'ajaxinwp-site-editor',
                 'title' => __( 'Site Editor', 'ajaxinwp' ),
-                'href'  => admin_url( 'site-editor.php' ),
+                'href'  => admin_url( 'site-editor.php' ),\
             ]
         );
     } else {
         $wp_admin_bar->add_node(
             [
+                'parent' => $parent,
+                'id'     => 'ajaxinwp-customize',
+                'title'  => __( 'Customize', 'ajaxinwp' ),
+                'href'   => admin_url( 'customize.php' ),
+            ]
+        );
+    }
+
+    $file_edit_allowed = ! defined( 'DISALLOW_FILE_EDIT' ) || ! DISALLOW_FILE_EDIT;
+    if ( current_user_can( 'edit_themes' ) && $file_edit_allowed ) {
+        $wp_admin_bar->add_node(
+            [
+                'parent' => $parent,
+                'id'     => 'ajaxinwp-theme-editor',
+                'title'  => __( 'Theme File Editor', 'ajaxinwp' ),
+                'href'   => admin_url( 'theme-editor.php' ),
+            ]
+        );
+    }
                 'id'    => 'ajaxinwp-customize',
                 'title' => __( 'Customize', 'ajaxinwp' ),
                 'href'  => admin_url( 'customize.php' ),
