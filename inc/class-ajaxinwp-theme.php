@@ -171,11 +171,11 @@ class AjaxinWP_Theme {
 
     /** Add a table of contents to post content */
     public function add_table_of_contents( $content ) {
-        if ( is_singular( 'post' ) && in_the_loop() && is_main_query() ) {
+        if ( is_singular() && in_the_loop() && is_main_query() ) {
             if ( preg_match_all( '/<h([2-3])[^>]*>(.*?)<\/h\1>/', $content, $matches ) ) {
                 $toc = '<nav class="ajaxinwp-toc"><strong>' . esc_html__( 'Contents', 'ajaxinwp' ) . '</strong><ol>';
                 foreach ( $matches[2] as $index => $heading ) {
-                    $slug    = 'toc-' . ( $index + 1 );
+                    $slug    = sanitize_title( wp_strip_all_tags( $heading ) );
                     $content = str_replace( $matches[0][ $index ], '<h' . $matches[1][ $index ] . ' id="' . esc_attr( $slug ) . '">' . $heading . '</h' . $matches[1][ $index ] . '>', $content );
                     $toc    .= '<li><a href="#' . esc_attr( $slug ) . '">' . wp_strip_all_tags( $heading ) . '</a></li>';
                 }
@@ -183,6 +183,7 @@ class AjaxinWP_Theme {
                 return $toc . $content;
             }
         }
+
         return $content;
     }
 
