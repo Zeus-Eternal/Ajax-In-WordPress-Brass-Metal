@@ -578,7 +578,6 @@ ol {
 
 /* Table of Contents */
 .ajaxinwp-toc {
-    background-color: var(--primary-accent-color);
     padding: 1em;
     margin-bottom: 1.5em;
     border: 1px solid var(--border-color);
