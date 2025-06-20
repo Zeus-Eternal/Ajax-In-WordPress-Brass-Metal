@@ -87,6 +87,29 @@ function ajaxinwp_admin_bar_links( $wp_admin_bar ) {
         $wp_admin_bar->add_node(
             [
                 'id'    => 'ajaxinwp-site-editor',
+                'title' => __( 'Site Editor', 'ajaxinwp' ),
+                'href'  => admin_url( 'site-editor.php' ),
+            ]
+        );
+    } else {
+        $wp_admin_bar->add_node(
+            [
+                'id'    => 'ajaxinwp-customize',
+                'title' => __( 'Customize', 'ajaxinwp' ),
+                'href'  => admin_url( 'customize.php' ),
+            ]
+        );
+    }
+
+    if ( current_user_can( 'edit_themes' ) ) {
+        $wp_admin_bar->add_node(
+            [
+                'id'    => 'ajaxinwp-theme-editor',
+                'title' => __( 'Theme File Editor', 'ajaxinwp' ),
+                'href'  => admin_url( 'theme-editor.php' ),
+            ]
+        );
+    }
                 'title' => __( 'Edit Site', 'ajaxinwp' ),
                 'href'  => admin_url( 'site-editor.php' ),
             ]
